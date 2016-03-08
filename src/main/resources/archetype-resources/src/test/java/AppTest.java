@@ -1,4 +1,4 @@
-package com.michaelmiklavcic;
+package ${package};
 
 import org.junit.Test;
 

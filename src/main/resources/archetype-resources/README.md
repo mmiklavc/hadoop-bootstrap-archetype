@@ -7,10 +7,16 @@ $h1 ${artifactId}
 
 Welcome to the project
 
+$h4 Running project from command line
+
+```bash
+mvn exec:java -Dexec.mainClass="${package}.AppMain"
+```
+
 $h4 Cutting a release for ${artifactId}
 
 ```bash
-    mvn release:prepare -Dscm-connection.url=<scm readonly url> -Dscm-developer-connection.url=<scm read-write url>
+mvn release:prepare -Dscm-connection.url=<scm readonly url> -Dscm-developer-connection.url=<scm read-write url>
 ```
 
 **Note**: The main pom assumes "scm:git:<url>" - simply pass in the URL portion as a build parameter as shown above.
