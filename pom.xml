@@ -23,6 +23,8 @@
 
         <!-- plugin versions -->
         <maven-archetype-plugin.version>2.4</maven-archetype-plugin.version>
+        <!-- v2.7 currently has an issue with not including dot files, e.g. it skips .gitignore -->
+        <maven-resources-plugin.version>2.6</maven-resources-plugin.version>
     </properties>
 
     <build>
@@ -40,8 +42,13 @@
                     <artifactId>maven-archetype-plugin</artifactId>
                     <version>${maven-archetype-plugin.version}</version>
                 </plugin>
+                <plugin>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>${maven-resources-plugin.version}</version>
+                </plugin>
             </plugins>
         </pluginManagement>
+
     </build>
 
 </project>
