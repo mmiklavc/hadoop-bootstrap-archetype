@@ -39,6 +39,7 @@
         <maven-source-plugin.version>3.0.0</maven-source-plugin.version>
         <maven-javadoc-plugin.version>2.10.3</maven-javadoc-plugin.version>
         <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
+        <maven-assembly-plugin.version>2.6</maven-assembly-plugin.version>
 
         <!-- main dependency versions -->
         <commons-io.version>2.4</commons-io.version>
@@ -58,23 +59,34 @@
         <developerConnection>scm:git:${scm-developer-connection.url}</developerConnection>
     </scm>
 
+    <profiles>
+        <profile>
+            <id>HDP</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <repositories>
+                <repository>
+                    <releases>
+                        <enabled>true</enabled>
+                        <updatePolicy>always</updatePolicy>
+                        <checksumPolicy>warn</checksumPolicy>
+                    </releases>
+                    <snapshots>
+                        <enabled>false</enabled>
+                        <updatePolicy>never</updatePolicy>
+                        <checksumPolicy>fail</checksumPolicy>
+                    </snapshots>
+                    <id>HDPReleases</id>
+                    <name>HDP Releases</name>
+                    <url>http://repo.hortonworks.com/content/repositories/releases/</url>
+                    <layout>default</layout>
+                </repository>
+            </repositories>
+        </profile>
+    </profiles>
+
     <repositories>
-        <repository>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-                <checksumPolicy>warn</checksumPolicy>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-                <updatePolicy>never</updatePolicy>
-                <checksumPolicy>fail</checksumPolicy>
-            </snapshots>
-            <id>HDPReleases</id>
-            <name>HDP Releases</name>
-            <url>http://repo.hortonworks.com/content/repositories/releases/</url>
-            <layout>default</layout>
-        </repository>
         <repository>
             <id>multiline-release-repo</id>
             <url>https://raw.github.com/benelog/multiline/master/maven-repository</url>
@@ -146,6 +158,19 @@
                             <goals>
                                 <goal>shade</goal>
                             </goals>
+                            <configuration>
+                                <shadedArtifactAttached>true</shadedArtifactAttached>
+                                <filters>
+                                    <filter>
+                                        <artifact>*:*</artifact>
+                                        <excludes>
+                                            <exclude>META-INF/*.SF</exclude>
+                                            <exclude>META-INF/*.RSA</exclude>
+                                            <exclude>META-INF/*.INF</exclude>
+                                        </excludes>
+                                    </filter>
+                                </filters>
+                            </configuration>
                         </execution>
                     </executions>
                 </plugin>
@@ -212,6 +237,28 @@
                         <id>attach-javadocs</id>
                         <goals>
                             <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>${maven-assembly-plugin.version}</version>
+                <configuration>
+                    <descriptor>src/assembly/bin.xml</descriptor>
+                    <finalName>${project.name}-${project.version}</finalName>
+                    <appendAssemblyId>false</appendAssemblyId>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
                         </goals>
                     </execution>
                 </executions>

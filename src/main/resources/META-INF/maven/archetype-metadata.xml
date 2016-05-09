@@ -15,6 +15,9 @@
                 <include>README.md</include>
             </includes>
         </fileSet>
+        <fileSet filtered="true" encoding="UTF-8">
+            <directory>src/main/resources</directory>
+        </fileSet>
         <fileSet filtered="true" packaged="true" encoding="UTF-8">
             <directory>src/main/java</directory>
             <includes>
@@ -26,6 +29,9 @@
             <includes>
                 <include>**/*.java</include>
             </includes>
+        </fileSet>
+        <fileSet filtered="false" encoding="UTF-8">
+            <directory>src/assembly</directory>
         </fileSet>
     </fileSets>
 </archetype-descriptor>
