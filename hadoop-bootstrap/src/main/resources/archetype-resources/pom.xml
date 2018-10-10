@@ -13,7 +13,7 @@
     <developers>
         <developer>
             <name>Michael Miklavcic</name>
-            <email>michael@clevelandflash.com</email>
+            <email>michael.miklavcic@gmail.com</email>
             <organizationUrl>http://blog.michaelmiklavcic.com</organizationUrl>
         </developer>
     </developers>
@@ -43,6 +43,7 @@
 
         <!-- main dependency versions -->
         <commons-io.version>2.4</commons-io.version>
+        <commons-lang3.version>3.8.1</commons-lang3.version>
         <guava.version>19.0</guava.version>
         <logback.version>1.1.6</logback.version>
         <hadoop.version>2.7.2</hadoop.version>
@@ -50,7 +51,7 @@
         <!-- test dependency versions -->
         <!-- junit version 4.12 does not require junit-dep to work with hamcrest matchers. hamcrest-core is now included as a dependency -->
         <junit.version>4.12</junit.version>
-        <mockito.version>1.10.19</mockito.version>
+        <mockito.version>2.23.0</mockito.version>
         <multiline-string.version>0.1.2</multiline-string.version>
     </properties>
 
@@ -108,6 +109,11 @@
             <version>${commons-io.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
+        </dependency>
+        <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>${guava.version}</version>
@@ -133,7 +139,7 @@
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
-            <artifactId>mockito-all</artifactId>
+            <artifactId>mockito-core</artifactId>
             <version>${mockito.version}</version>
             <scope>test</scope>
         </dependency>

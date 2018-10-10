@@ -2,15 +2,15 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.michaelmiklavcic</groupId>
-    <artifactId>hadoop-bootstrap-archetype</artifactId>
+    <artifactId>bootstrap-archetype</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>maven-archetype</packaging>
-    <name>Archetype - hadoop-bootstrap-archetype</name>
+    <packaging>pom</packaging>
+    <name>Archetype - bootstrap-archetype parent</name>
 
     <developers>
         <developer>
             <name>Michael Miklavcic</name>
-            <email>michael@clevelandflash.com</email>
+            <email>michael.miklavcic@gmail.com</email>
         </developer>
     </developers>
 
@@ -19,12 +19,11 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <!-- extension versions -->
-        <archetype-packaging.version>2.4</archetype-packaging.version>
+        <archetype-packaging.version>3.0.1</archetype-packaging.version>
 
         <!-- plugin versions -->
-        <maven-archetype-plugin.version>2.4</maven-archetype-plugin.version>
-        <!-- v2.7 currently has an issue with not including dot files, e.g. it skips .gitignore -->
-        <maven-resources-plugin.version>2.6</maven-resources-plugin.version>
+        <maven-archetype-plugin.version>3.0.1</maven-archetype-plugin.version>
+        <maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
     </properties>
 
     <build>
@@ -35,7 +34,6 @@
                 <version>${archetype-packaging.version}</version>
             </extension>
         </extensions>
-
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -48,7 +46,6 @@
                 </plugin>
             </plugins>
         </pluginManagement>
-
     </build>
 
 </project>

@@ -26,7 +26,10 @@ mvn clean install
 Use the archetype (in CLI or IDE)
 ```bash
 cd <some directory where you want the archetype to generate a new child folder for your project>
+# hadoop archetype
 mvn archetype:generate -DarchetypeGroupId=com.michaelmiklavcic -DarchetypeArtifactId=hadoop-bootstrap-archetype -DarchetypeVersion=1.0-SNAPSHOT
+# java archetype
+mvn archetype:generate -DarchetypeGroupId=com.michaelmiklavcic -DarchetypeArtifactId=java-bootstrap-archetype -DarchetypeVersion=1.0-SNAPSHOT
 ```
 
 Then just follow the prompts provided by Maven and you should have a new project skeleton complete with README file.
