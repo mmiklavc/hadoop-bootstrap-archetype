@@ -7,6 +7,11 @@
     <packaging>pom</packaging>
     <name>Archetype - bootstrap-archetype parent</name>
 
+    <modules>
+        <module>hadoop-bootstrap</module>
+        <module>java-bootstrap</module>
+    </modules>
+
     <developers>
         <developer>
             <name>Michael Miklavcic</name>
